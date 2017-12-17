@@ -42,6 +42,12 @@ def FindReviewee( jsonfile_data ):
     return jsonfile_data['header']['properties']['value']['PlayerName']['value']['str_property']
 
 
+def CheckOutputDir():
+    """ Ensure that "RL_ReplayName/out" exists. """
+    if not os.path.exists( os.path.join( os.getcwd(), "out" ) )
+        os.makedirs( os.path.join( os.getcwd(), "out" ) )
+    
+
 def ReplaceNames( data ):
     """ Replace all names with generic names. """
     print( "Replacing names..." )
@@ -70,7 +76,7 @@ def ReplaceNames( data ):
                 print( "{} -> {}".format( name, "Opponent #{}".format( opponent_counter ) ) )
                 player['value']['Name']['value']['str_property'] = "Opponent #{}".format( opponent_counter )
                 opponent_counter += 1
-
+    return data
     
 
 def ReplayToJSON( replay ):
@@ -83,14 +89,14 @@ def ReplayToJSON( replay ):
     return json_path
 
 
-
-
 def JSONtoReplay( data, json_path, old_replay_path ):
     """ Re-encode a JSON file to replay using rattletrap. """
     file_name = StripPathToFile( old_replay_path ).split(".")[0] + "_parsed.replay"
     old_path = os.path.split(old_replay_path)[0]
     new_replay_path = os.path.join( old_path, file_name )
     print( "Re-encoding {} to {}...".format( json_path, new_replay_path ) )
+    with open( json_path, 'w' ) as f:
+        f.write( json.dumps( data ) )
     os.system( "{} encode {} > {}".format( rattlepath, json_path, new_replay_path ) )
     print( "Done..." )
 
@@ -107,19 +113,20 @@ def RenameReplay( data ):
     print( "Renaming replay from '{0}' to '{0}_names_fixed'...".format( data['header']['properties']['value']['ReplayName']['value']['str_property'] ) )
     name = data['header']['properties']['value']['ReplayName']['value']['str_property']
     data['header']['properties']['value']['ReplayName']['value']['str_property'] = "{}_names_fixed".format( name )
-
+    return data
     
 def ParseArgs():
     """ Parse the command line arguments. """
     args = sys.argv[1:]
     if len( args ) < 1:
         raise SyntaxError( "There must be at least one argument. None passed." )
+    CheckOutputDir()
     for arg in args:
         json_file = ReplayToJSON( arg )
         with open( json_file, 'r' ) as f:
             json_data = json.load(f)
-            ReplaceNames( json_data )
-            RenameReplay( json_data )
+            json_data = ReplaceNames( json_data )
+            json_data = RenameReplay( json_data )
             JSONtoReplay( json_data, json_file, arg )
     
 if __name__ == "__main__":
