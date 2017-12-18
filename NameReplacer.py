@@ -44,7 +44,7 @@ def FindReviewee( jsonfile_data ):
 
 def CheckOutputDir():
     """ Ensure that "RL_ReplayName/out" exists. """
-    if not os.path.exists( os.path.join( os.getcwd(), "out" ) )
+    if not os.path.exists( os.path.join( os.getcwd(), "out" ) ):
         os.makedirs( os.path.join( os.getcwd(), "out" ) )
     
 
