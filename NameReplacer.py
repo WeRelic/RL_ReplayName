@@ -68,67 +68,6 @@ def CheckOutputDir():
         os.makedirs( os.path.join( os.getcwd(), "out" ) )
 
 
-
-
-
-
-
-
-def FormatPath( p, varname = "data" ):
-    fmt = "{}[{}]"
-    s = "{}".format( varname )
-    for i in p:
-        if isinstance( i, int ):
-            s = fmt.format( s, i )
-        else:
-            s = fmt.format( s, "'{}'".format( i ) )
-    return s
-
-def FindName( d, val ):
-    global path, paths, data
-    #time.sleep( 0.1 )
-    if isinstance( d, dict ):
-        #print( "\n\nFound dict... Enumerating..." )
-        for k, v in d.items():
-            path.append( k )
-            #print( "Passing {} to enumjson...".format( FormatPath( path ) ) )
-            
-            FindName( v, val )
-            if len( path ) > 0:
-                #print( "[DictSearch] Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
-                path.pop()
-    elif isinstance( d, list ):
-        #print( "\n\nFound list... Enumerating..." )
-        ind = 0
-        for x in d:
-            path.append( ind )
-            ind += 1
-            #print( "Passing {} to enumjson...".format( FormatPath( path ) ) )
-            FindName( x, val )
-            
-            if len( path ) > 0:
-                #print( "[ListSearch] Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
-                if isinstance( path[ len( path ) - 1 ], int ):
-                    path.pop()
-    else:
-        if d == val:
-            #print( "Value Found!!!!!! {}\n Appending {} to paths...\n\n".format( '~'*32, FormatPath( path ) ) )
-            pathcopy = copy.deepcopy( path )
-            paths.append( pathcopy )
-            #print( "Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
-            path.pop()
-            #time.sleep( 10 )
-
-            
-def ReplaceName( keypath, newname ):
-    global data
-    exec( '{} = {}'.format( FormatPath( keypath, 'data' ), str( newname ) ), data )
-    return jsondata
-
-
-
-
-
 def FindReviewee( jsondata ):
     """ Find the person who is being reviewed's name. """
     return jsondata['header']['properties']['value']['PlayerName']['value']['str_property']
