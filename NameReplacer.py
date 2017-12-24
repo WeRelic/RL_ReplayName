@@ -28,28 +28,115 @@
 """
 
 
-import os, sys, json, subprocess, ntpath, re
+import os, sys, json, subprocess, ntpath, operator, functools, copy, time
 
 rattlepath = os.path.join( os.getcwd(), "win_rattle.exe" )
+player_name_replacements = []
+paths, path = ([], [])
 
+# Rattletrap Interface:
+def ReplayToJSON( replay ):
+    """ Convert a replay to JSON using rattletrap. """
+    print( "Parsing {} to JSON...".format( replay ) )
+    json_name = StripPathToFile(replay).split( "." )[0]
+    json_path = os.path.join( os.getcwd(), "out", "{}.json".format(json_name) )
+    os.system( "{} decode {} > {}".format( rattlepath, replay, json_path ) )
+    print( "Done..." )
+    return json_path
+
+def JSONtoReplay( json_path, old_replay_path ):
+    """ Re-encode a JSON file to replay using rattletrap. """
+    file_name = StripPathToFile( old_replay_path ).split(".")[0] + "_parsed.replay"
+    old_path = os.path.split(old_replay_path)[0]
+    new_replay_path = os.path.join( old_path, file_name )
+    print( "Re-encoding {} to {}...".format( json_path, new_replay_path ) )
+    os.system( "{} encode {} > {}".format( rattlepath, json_path, new_replay_path ) )
+    print( "Done..." )
+
+
+
+
+# OS Interface:
 def StripPathToFile( path ):
     """ Strip a file path down to the last folder/file name. """
     head, tail = ntpath.split(path)
     return tail or ntpath.basename(head)
 
-def FindReviewee( jsonfile_data ):
-    """ Find the person who is being reviewed's name. """
-    return jsonfile_data['header']['properties']['value']['PlayerName']['value']['str_property']
-
-
 def CheckOutputDir():
     """ Ensure that "RL_ReplayName/out" exists. """
     if not os.path.exists( os.path.join( os.getcwd(), "out" ) ):
         os.makedirs( os.path.join( os.getcwd(), "out" ) )
-    
 
-def ReplaceNames( data, json_datafile ):
+
+
+
+
+
+
+
+def FormatPath( p, varname = "data" ):
+    fmt = "{}[{}]"
+    s = "{}".format( varname )
+    for i in p:
+        if isinstance( i, int ):
+            s = fmt.format( s, i )
+        else:
+            s = fmt.format( s, "'{}'".format( i ) )
+    return s
+
+def FindName( d, val ):
+    global path, paths, data
+    #time.sleep( 0.1 )
+    if isinstance( d, dict ):
+        #print( "\n\nFound dict... Enumerating..." )
+        for k, v in d.items():
+            path.append( k )
+            #print( "Passing {} to enumjson...".format( FormatPath( path ) ) )
+            
+            FindName( v, val )
+            if len( path ) > 0:
+                #print( "[DictSearch] Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
+                path.pop()
+    elif isinstance( d, list ):
+        #print( "\n\nFound list... Enumerating..." )
+        ind = 0
+        for x in d:
+            path.append( ind )
+            ind += 1
+            #print( "Passing {} to enumjson...".format( FormatPath( path ) ) )
+            FindName( x, val )
+            
+            if len( path ) > 0:
+                #print( "[ListSearch] Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
+                if isinstance( path[ len( path ) - 1 ], int ):
+                    path.pop()
+    else:
+        if d == val:
+            #print( "Value Found!!!!!! {}\n Appending {} to paths...\n\n".format( '~'*32, FormatPath( path ) ) )
+            pathcopy = copy.deepcopy( path )
+            paths.append( pathcopy )
+            #print( "Popping {} from path...".format( str( path[ len( path ) -1 ] ) ) )
+            path.pop()
+            #time.sleep( 10 )
+
+            
+def ReplaceName( keypath, newname ):
+    global data
+    exec( '{} = {}'.format( FormatPath( keypath, 'data' ), str( newname ) ), data )
+    return jsondata
+
+
+
+
+
+def FindReviewee( jsondata ):
+    """ Find the person who is being reviewed's name. """
+    return jsondata['header']['properties']['value']['PlayerName']['value']['str_property']
+
+
+def ReplaceNames():
     """ Replace all names with generic names. """
+    global player_name_replacements, paths, path, data
     print( "Replacing names..." )
     reviewee_team = None
     teammate_counter = 1
@@ -65,7 +152,7 @@ def ReplaceNames( data, json_datafile ):
     for player in data['header']['properties']['value']['PlayerStats']['value']['array_property']:
         # Get the current player's name. 
         name = player['value']['Name']['value']['str_property']
-                
+        
         if name == FindReviewee(data):
             newname = "Reviewee"
         else:
@@ -77,53 +164,37 @@ def ReplaceNames( data, json_datafile ):
                 opponent_counter += 1
 
         print( "{} -> {}".format( name, newname ) )
-
-        # Problem is in this block!
-        #json_datafile = ReplaceName( json_datafile, name, newname )
-        replacement = "{'kind': 'StrProperty', 'size': " + str( len( newname ) + 5 )
-        replacement = replacement + ", 'value': {'str_property': '" + newname + "'}}"
-        print( str(player['value']['Name']) + " gets replaced by " + replacement )
-        json_datafile = json_datafile.replace( str(player['value']['Name']), replacement )
-
-        
+        player_name_replacements.append( (name, newname) )
+        player['value']['Name']['value']['str_property'] = newname
+        player['value']['Name']['size'] = len( newname ) + 3
         index += 1
-    return (data, json_datafile)
-    
 
-def ReplayToJSON( replay ):
-    """ Convert a replay to JSON using rattletrap. """
-    print( "Parsing {} to JSON...".format( replay ) )
-    json_name = StripPathToFile(replay).split( "." )[0]
-    json_path = os.path.join( os.getcwd(), "out", "{}.json".format(json_name) )
-    os.system( "{} decode {} > {}".format( rattlepath, replay, json_path ) )
-    print( "Done..." )
-    return json_path
+        # Search Goal data for player names...
+        for goal in data['header']['properties']['value']['Goals']['value']['array_property']:
+            if goal['value']['PlayerName']['value']['str_property'] == name:
+                goal['value']['PlayerName']['size'] = len( newname ) + 3
+                goal['value']['PlayerName']['value']['str_property'] = newname
 
-
-def JSONtoReplay( data, json_path, old_replay_path ):
-    """ Re-encode a JSON file to replay using rattletrap. """
-    file_name = StripPathToFile( old_replay_path ).split(".")[0] + "_parsed.replay"
-    old_path = os.path.split(old_replay_path)[0]
-    new_replay_path = os.path.join( old_path, file_name )
-    print( "Re-encoding {} to {}...".format( json_path, new_replay_path ) )
-    os.system( "{} encode {} > {}".format( rattlepath, json_path, new_replay_path ) )
-    print( "Done..." )
+    return data
 
 
 
-def GetPlayerNames( data ):
+
+
+def GetPlayerNames():
     """ Return a list of names for all players present in this replay. """
+    global data
     print( "Getting player roster..." )
     return [ key['value']['Name']['value']['str_property'] for key in data['header']['properties']['value']['PlayerStats']['value']['array_property'] ]
 
 
-def RenameReplay( data, datafile ):
+def RenameReplay():
     """ Append "_names_fixed" to the replay file's name. """
-    print( "Renaming replay from '{0}' to '{0}_names_fixed'...".format( data['header']['properties']['value']['ReplayName']['value']['str_property'] ) )
+    global data
+    print( "Renaming replay from '{0}' to '{0}_parsed'...".format( data['header']['properties']['value']['ReplayName']['value']['str_property'] ) )
     name = data['header']['properties']['value']['ReplayName']['value']['str_property']
-    datafile = datafile.replace( name, "{}_names_fixed".format( name ) )
-    return (data, datafile)
-    
+    data['header']['properties']['value']['ReplayName']['value']['str_property'] = "{}_parsed".format( name )
+    return data
     
 if __name__ == "__main__":
     args = sys.argv[1:]
@@ -133,16 +204,22 @@ if __name__ == "__main__":
     for arg in args:
         json_file = ReplayToJSON( arg )
         with open( json_file, 'r' ) as f:
-            json_datafile = f.read()
-        json_data = json.loads(json_datafile)
-        json_data, json_datafile = ReplaceNames( json_data, json_datafile )
-        json_data, json_datafile = RenameReplay( json_data, json_datafile )
-        JSONtoReplay( json_data, json_file, arg )
+            data = json.load( f )
         
+        #data = RenameReplay()
+        data = ReplaceNames()
 
-    
-    with open( json_file ) as f:
-        filedata = json.load(f)
-    for i in [ key['value']['Name']['value']['str_property'] for key in filedata['header']['properties']['value']['PlayerStats']['value']['array_property'] ]:
-        print( i )
+        # Here there be hackish code:
+        with open( json_file, 'w' ) as f:
+            json.dump( data, f )
+
+        with open( json_file, 'r' ) as f:
+            jdata = f.read()
+            for i in player_name_replacements:
+                jdata = jdata.replace( i[0], i[1] )
+        with open( json_file, 'w' ) as f:
+            f.write( jdata )
+
+            
+        JSONtoReplay( json_file, arg )
         
