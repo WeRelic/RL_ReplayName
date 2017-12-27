@@ -1,0 +1,275 @@
+{
+    "Boost"         : {
+        "Ion" : { "rattletrap_value" : None, "paintable" : True, "valid_paint_colors" : [] }
+    },
+    "Wheels"        : {
+        "Apex" : { "rattletrap_value" : None, "paintable" : True, "valid_paint_colors" : [] }
+    },
+    "Antenna"       : {
+        "Tennis Ball" : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] }
+    },
+    "Trail"         : {
+        "Default"   : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] },
+        "Lightning" : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] }
+    },
+    "Topper"        : {
+        "Halo"      : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] },
+        "Cow"       : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] }
+    },
+    "GoalExplosion" : {
+        "Standard Orange" : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] },
+        "Standard Purple" : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] },
+        "Hellfire"        : { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [] }
+    },
+    "EngineSound"   : {
+        "OEM"       : None,
+        "OEM V2"    : None
+    },
+    
+    
+    
+    
+    
+    "CarBody"     : {
+        "Octane"v
+        "Breakout"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Backfire"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Gizmo"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Hotshot"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Merc"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Paladin"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Road Hog"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Venom"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "X-Devil"  = { 
+            "rattletrap_value" : None, 
+            "paintable" : True, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [ 
+                "Heatwave", 
+                "Biomass",
+                "Cold Sweater",
+                "Twisted Tree",
+                "Labyrinth",
+                "20XX", 
+                "Bubbly",
+                "Slipstream",
+                "Spectre",
+                "Hexed",
+                "Parallax",
+                "Slipstream"
+            ],
+        },
+        "Armadillo" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Hogsticker" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Luigi NSR" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Mario NSR" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Samus' Gunship" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Sweet Tooth" = { 
+            "rattletrap_value" : None, 
+            "paintable" : False, 
+            "valid_paint_colors" : [], 
+            "valid_decals" : [],
+        },
+        "Animus GP" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Breakout Type-S" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Centio V17" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Dominus GT" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Endo" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Imperator DT5" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Jager 619 RS" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Mantis" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Octane ZSR" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Road Hog XL" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Takumi RX-T" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "X-Devil Mk2" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "'70 Dodge Charger R/T" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "'99 Nissan Skyline GT-R R34" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Aftershock" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Batmobile" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Bone Shaker" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "DeLorean Time Machine" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Dominus" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Esper" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Grog" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Ice Charger" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Marauder" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Masamune" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Proteus" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Ripper" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Scarab" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Takumi" = { "rattletrap_value" : None, "paintable" : False, "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Triton" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Twin Mill III" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Vulcan" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+        "Zippy" = { "rattletrap_value" : None, "paintable" : True,  "valid_paint_colors" : [], "valid_decals" : [ "Heatwave", "Biomass", "Cold Sweater", "Labyrinth", "20XX", "Bubbly" ... ], },
+    }
+}
